@@ -43,10 +43,6 @@
         "terminationGracePeriodSeconds": {{ item.pod.terminationGracePeriodSeconds }},
         {% endif %}
 
-        {% if item.pod.imagePullSecrets is defined %}
-        "imagePullSecrets" : {{ item.pod.imagePullSecrets | to_json }},
-        {% endif %}
-
         {% if item.pod.securityContext is defined %}
         "securityContext" : {{ item.pod.securityContext | to_json }},
         {% endif %}
