@@ -9,7 +9,7 @@
      }
   },
   "spec": {
-    {% if item.pod.imagePullSecrets is defined %}
+    {% if item.imagePullSecrets is defined %}
     "imagePullSecrets" : {{ item.imagePullSecrets | to_json }},
     {% endif %}
     "selector": {
