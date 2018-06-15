@@ -9,6 +9,9 @@
      }
   },
   "spec": {
+    {% if item.pod.imagePullSecrets is defined %}
+    "imagePullSecrets" : {{ item.imagePullSecrets | to_json }},
+    {% endif %}
     "selector": {
         "matchLabels": {
             "daemonset": "{{item.name}}"
