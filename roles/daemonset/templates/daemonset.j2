@@ -9,9 +9,6 @@
      }
   },
   "spec": {
-    {% if item.imagePullSecrets is defined %}
-    "imagePullSecrets" : {{ item.imagePullSecrets | to_json }},
-    {% endif %}
     "selector": {
         "matchLabels": {
             "daemonset": "{{item.name}}"
@@ -26,6 +23,9 @@
         }
       },
       "spec": {
+        {% if item.imagePullSecrets is defined %}
+        "imagePullSecrets" : {{ item.imagePullSecrets | to_json }},
+        {% endif %}
         "containers": {{item.containers | to_json}}
         {% if item.volumes is defined %}
         , "volumes": {{item.volumes | to_json}}
